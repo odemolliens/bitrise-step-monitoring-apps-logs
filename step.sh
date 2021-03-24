@@ -1,6 +1,12 @@
 #!/bin/bash
 set -ex
 
+if [[ ${log_count} != "" ]]; then
+    LIMIT="$log_count"
+else
+    LIMIT="0"
+fi
+
 if [[ ${check_android} == "yes" ]]; then
     if [ ! -d "apk_decompiled" ]; then
         echo "ERROR: Cannot find any decompiled apk"
@@ -30,7 +36,7 @@ printf "\n\n" >> quality_report.txt
 
 cp quality_report.txt /Users/vagrant/deploy/quality_report.txt || true
 
-if [[ ${COUNT_ANDROID_LOGS} != "" && ${COUNT_ANDROID_LOGS} -gt "0" ]]; then
+if [[ ${COUNT_ANDROID_LOGS} != "" && ${COUNT_ANDROID_LOGS} -gt $LIMIT ]]; then
     echo "Generate an error due to logs in your native codes"
     exit 1
 fi

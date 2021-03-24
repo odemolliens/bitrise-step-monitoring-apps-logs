@@ -48,3 +48,10 @@ inputs:
       value_options:
         - "yes"
         - "no"
+  - log_count:
+    opts:
+      title: "The count of logs in your app"
+      summary: "If you have some logs in your app and want to keep them"
+      description: "If you have some logs in your app and want to keep them, set here the count to not fail the step and be aware when new logs added to project"
+      is_expand: true
+      is_required: false

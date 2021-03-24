@@ -48,6 +48,7 @@ workflows:
         run_if: true
         inputs:
         - check_android: "yes"
+        - log_count: "141"
     - script:
         inputs:
         - content: |
