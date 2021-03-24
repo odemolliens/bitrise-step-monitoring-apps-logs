@@ -10,13 +10,14 @@
 title: |-
   Mobile apps logs
 summary: |
-  Mobile if you apps kept any logs in your release build
+  Check if your mobile apps kept any logs in your release build
 description: |
   Check if applications contain any logs in the release app
+  If yes, this step will fail and generate a fail where you can see the count 
 
   ### Troubleshooting
 
-  - Be aware, you have to launch this step after [apps-decompiler](https://github.com/imranMnts/bitrise-step-apps-decompiler) step
+  - Be aware, you have to launch this step after [apps-decompiler](https://github.com/imranMnts/bitrise-step-apps-decompiler) to have informations from your APK/IPA
 
 website: https://github.com/odemolliens/bitrise-step-monitoring-apps-permissions
 source_code_url: https://github.com/odemolliens/bitrise-step-monitoring-apps-permissions
@@ -25,7 +26,6 @@ host_os_tags:
   - osx-10.10
   - ubuntu-16.04
 project_type_tags:
-  - ios
   - android
   - react-native
   - flutter
@@ -43,16 +43,6 @@ inputs:
       title: "Check Android"
       summary: "Do you want check android permissions?"
       description: "To check or not android permissions"
-      is_expand: true
-      is_required: true
-      value_options:
-        - "yes"
-        - "no"
-  - check_ios: "yes"
-    opts:
-      title: "Check iOS"
-      summary: "Do you want check iOS permissions?"
-      description: "To check or not iOS permissions"
       is_expand: true
       is_required: true
       value_options:
