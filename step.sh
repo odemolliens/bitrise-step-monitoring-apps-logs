@@ -1,6 +1,5 @@
 #!/bin/bash
 set -ex
-fi
 
 if [[ ${check_android} == "yes" ]]; then
     if [ ! -d "apk_decompiled" ]; then
