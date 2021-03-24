@@ -10,14 +10,14 @@
 title: |-
   Mobile apps logs
 summary: |
-  Check if your mobile apps kept any logs in your release build
+  Check if your Android app kept any logs in your release build
 description: |
-  Check if applications contain any logs in the release app
+  Check if an Android application contain any logs in the release app
   If yes, this step will fail and generate a fail where you can see the count 
 
   ### Troubleshooting
 
-  - Be aware, you have to launch this step after [apps-decompiler](https://github.com/imranMnts/bitrise-step-apps-decompiler) to have informations from your APK/IPA
+  - Be aware, you have to launch this step after [apps-decompiler](https://github.com/imranMnts/bitrise-step-apps-decompiler) to have informations from your APK
 
 website: https://github.com/odemolliens/bitrise-step-monitoring-apps-permissions
 source_code_url: https://github.com/odemolliens/bitrise-step-monitoring-apps-permissions
