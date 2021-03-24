@@ -1,0 +1,50 @@
+#
+# A couple of useful guides & docs:
+#
+# - Main Bitrise CLI docs: https://github.com/bitrise-io/bitrise/tree/master/_docs
+# - Step Development Guideline: https://github.com/bitrise-io/bitrise/blob/master/_docs/step-development-guideline.md
+# - Bitrise.yml format spec: https://github.com/bitrise-io/bitrise/blob/master/_docs/bitrise-yml-format-spec.md
+# - Bitrise docs: http://devcenter.bitrise.io/
+# - Bitrise CLI guides: http://devcenter.bitrise.io/bitrise-cli/
+
+title: |-
+  Mobile apps logs
+summary: |
+  Check if your mobile apps kept any logs in your release build
+description: |
+  Check if applications contain any logs in the release app
+  If yes, this step will fail and generate a fail where you can see the count 
+
+  ### Troubleshooting
+
+  - Be aware, you have to launch this step after [apps-decompiler](https://github.com/imranMnts/bitrise-step-apps-decompiler) to have informations from your APK/IPA
+
+website: https://github.com/odemolliens/bitrise-step-monitoring-apps-permissions
+source_code_url: https://github.com/odemolliens/bitrise-step-monitoring-apps-permissions
+support_url: https://github.com/odemolliens/bitrise-step-monitoring-apps-permissions/issues
+host_os_tags:
+  - osx-10.10
+  - ubuntu-16.04
+project_type_tags:
+  - android
+  - react-native
+  - flutter
+type_tags:
+  - utility
+is_requires_admin_user: false
+is_always_run: true
+is_skippable: false
+toolkit:
+  bash:
+    entry_file: step.sh
+inputs:
+  - check_android: "yes"
+    opts:
+      title: "Check Android"
+      summary: "Do you want check android permissions?"
+      description: "To check or not android permissions"
+      is_expand: true
+      is_required: true
+      value_options:
+        - "yes"
+        - "no"
