@@ -13,7 +13,7 @@ summary: |
   Check if your Android app kept any logs in your release build
 description: |
   Check if an Android application contain any logs in the release app
-  If yes, this step will fail and generate a fail where you can see the count 
+  If yes, this step will fail and generate a failure where you can see the count 
 
   ### Troubleshooting
 
@@ -29,6 +29,7 @@ project_type_tags:
   - android
   - react-native
   - flutter
+  - ionic
 type_tags:
   - utility
 is_requires_admin_user: false
@@ -40,9 +41,9 @@ toolkit:
 inputs:
   - check_android: "yes"
     opts:
-      title: "Check Android"
-      summary: "Do you want check android permissions?"
-      description: "To check or not android permissions"
+      title: "Check Android logs"
+      summary: "Do you want to check if the Android app contain any logs?"
+      description: "Do you want to check if the Android app contain any logs?"
       is_expand: true
       is_required: true
       value_options:

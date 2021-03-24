@@ -3,7 +3,7 @@
 # Bitrise step - Mobile apps logs monitoring
 
 Check if applications contain any logs in the release app
-If yes, this step will fail and generate a fail where you can see the count 
+If yes, this step will fail and generate a failure where you can see the count 
 
 !! This step check only the content of an Android app !!
 
@@ -18,7 +18,7 @@ We are looking into the APK to be sure to have the **REAL** information because 
 Add this step using standard Workflow Editor and provide required input environment variables.
 
 Check if applications contain any logs in the release app
-If yes, this step will fail and generate a fail where you can see the count.
+If yes, this step will fail and generate a failure where you can see the count.
 
 <br/>
 
