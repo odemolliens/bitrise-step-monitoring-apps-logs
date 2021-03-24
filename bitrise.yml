@@ -47,8 +47,7 @@ workflows:
           file if you would not specify another value.
         run_if: true
         inputs:
-        - check_ios: "no"
-        - android_permission_count: "0"
+        - check_android: "yes"
     - script:
         inputs:
         - content: |
