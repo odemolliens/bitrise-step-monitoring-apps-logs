@@ -18,15 +18,18 @@ fi
 
 printf ">>>>>>>>>>  APP LOGS  <<<<<<<<<<\n" >> quality_report.txt
 
-
 if [[ ${COUNT_ANDROID_LOGS} == "" && ${COUNT_IOS_LOGS} == "" ]]; then
     printf "0 log in your native code \n" >> quality_report.txt
 else
-    if [[ ${COUNT_ANDROID_LOGS} != "" && ${COUNT_ANDROID_LOGS} -gr "0" ]]; then
-        printf "You have : $COUNT_ANDROID_LOGS in your Android code \n" >> quality_report.txt
+    if [[ ${COUNT_ANDROID_LOGS} != "" ]]; then
+        if [ ${COUNT_ANDROID_LOGS} -gt "0" ]; then
+                printf "You have : $COUNT_ANDROID_LOGS logs in your Android code \n" >> quality_report.txt
+        fi
     fi
-    if [[ ${COUNT_IOS_LOGS} != "" && ${COUNT_IOS_LOGS} -gr "0" ]]; then
-        printf "You have : $COUNT_IOS_LOGS in your iOS code \n" >> quality_report.txt
+    if [[ ${COUNT_IOS_LOGS} != "" ]]; then
+        if [ ${COUNT_IOS_LOGS} -gt "0" ]; then
+                printf "You have : $COUNT_IOS_LOGS logs in your iOS code \n" >> quality_report.txt
+        fi
     fi
 fi
 
