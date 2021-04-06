@@ -2,7 +2,7 @@
 
 # Bitrise step - Mobile apps logs monitoring
 
-Check if applications contain any logs in the release app
+Check if applications contain any logs in the release app</br>
 If yes, this step will fail and generate a failure where you can see the count 
 
 !! This step check only the content of an Android app !!
@@ -17,12 +17,13 @@ We are looking into the APK to be sure to have the **REAL** information because 
 
 Add this step using standard Workflow Editor and provide required input environment variables.
 
-Check if applications contain any logs in the release app
+Check if applications contain any logs in the release app</br>
 If yes, this step will fail and generate a failure where you can see the count.
 
 <br/>
 
-At the end, it will generate a report file `quality_report.txt`. Just have to launch `deploy-to-bitrise-io` after this step to publish it to your artifacts
+At the end, it will generate a report file `quality_report.txt`.</br>
+Just have to launch `deploy-to-bitrise-io` after this step to publish it to your artifacts
 
 ## Inputs
 
@@ -31,7 +32,6 @@ The asterisks (*) mean mandatory keys
 |Key             |Value type                     |Description    |Default value        
 |----------------|-------------|--------------|--------------|
 |check_android* |yes/no |Setup - Set yes if you want check Android part|yes|
-|check_ios* |yes/no |Setup - Set yes if you want check iOS part|yes|
 
 <br />
 
@@ -39,7 +39,7 @@ The asterisks (*) mean mandatory keys
 
 #### Android
 
-To remove all logs from Androoid native part, you have to add this code to your Proguard rules 
+To remove all logs from Android native part, you have to add this code to your Proguard rules 
 
 ```
 -assumenosideeffects class android.util.Log {
