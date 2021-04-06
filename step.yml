@@ -18,10 +18,9 @@ description: |
   ### Troubleshooting
 
   - Be aware, you have to launch this step after [apps-decompiler](https://github.com/imranMnts/bitrise-step-apps-decompiler) to have informations from your APK
-
-website: https://github.com/odemolliens/bitrise-step-monitoring-apps-permissions
-source_code_url: https://github.com/odemolliens/bitrise-step-monitoring-apps-permissions
-support_url: https://github.com/odemolliens/bitrise-step-monitoring-apps-permissions/issues
+website: https://github.com/odemolliens/bitrise-step-monitoring-apps-logs
+source_code_url: https://github.com/odemolliens/bitrise-step-monitoring-apps-logs
+support_url: https://github.com/odemolliens/bitrise-step-monitoring-apps-logs/issues
 host_os_tags:
   - osx-10.10
   - ubuntu-16.04
