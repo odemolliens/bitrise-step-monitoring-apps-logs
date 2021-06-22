@@ -13,7 +13,7 @@ summary: |
   Check if your Android app kept any logs in your release build
 description: |
   Check if an Android application contain any logs in the release app
-  If yes, this step will fail and generate a failure where you can see the count 
+  If yes, this step will fail and generate a failure where you can see the count and the location of logs
 
   ### Troubleshooting
 
