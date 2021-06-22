@@ -12,7 +12,7 @@ if [[ ${check_android} == "yes" ]]; then
         echo "ERROR: Cannot find any decompiled apk"
         exit 1
     fi
-
+    LOGS=$(grep -ri "Landroid/util/Log;->v(\|Landroid/util/Log;->w(\|Landroid/util/Log;->d(\|Landroid/util/Log;->e(" apk_decompiled/.)
     COUNT_ANDROID_LOGS=$(echo $(grep -ri "Landroid/util/Log;->v(\|Landroid/util/Log;->w(\|Landroid/util/Log;->d(\|Landroid/util/Log;->e(" apk_decompiled/. | wc -l))
 fi
 
@@ -29,11 +29,13 @@ if [[ ${COUNT_ANDROID_LOGS} == "" ]]; then
 else
     if [[ ${COUNT_ANDROID_LOGS} != "" && ${COUNT_ANDROID_LOGS} -gt "0" ]]; then
         printf "You have : $COUNT_ANDROID_LOGS logs in your Android code \n" >> quality_report.txt
+        printf "Reported logs: $LOGS\n" >> quality_report.txt
     fi
 fi
 
 printf "\n\n" >> quality_report.txt
 
+sed 's/apk_decompiled/\rapk_decompiled/g' quality_report.txt > /Users/vagrant/deploy/quality_report.txt
 cp quality_report.txt /Users/vagrant/deploy/quality_report.txt || true
 
 if [[ ${COUNT_ANDROID_LOGS} != "" && ${COUNT_ANDROID_LOGS} -gt $LIMIT ]]; then
