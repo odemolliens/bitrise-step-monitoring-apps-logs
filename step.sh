@@ -14,7 +14,7 @@ if [[ ${check_android} == "yes" ]]; then
     fi
 
     if [[ ${filter_path} != "" ]]; then
-        echo "Filtered path: $filter_path"
+        echo "Filtered path 2: $filter_path"
 
         LOGS=$(grep -ri "Landroid/util/Log;->i(\|Landroid/util/Log;->v(\|Landroid/util/Log;->w(\|Landroid/util/Log;->d(\|Landroid/util/Log;->e(" apk_decompiled/. | grep -v "$filter_path")
         COUNT_ANDROID_LOGS=$(echo $(grep -ri "Landroid/util/Log;->i(\|Landroid/util/Log;->v(\|Landroid/util/Log;->w(\|Landroid/util/Log;->d(\|Landroid/util/Log;->e(" apk_decompiled/. | grep -v "$filter_path" | wc -l))
