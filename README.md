@@ -32,6 +32,7 @@ The asterisks (*) mean mandatory keys
 |Key             |Value type                     |Description    |Default value        
 |----------------|-------------|--------------|--------------|
 |check_android* |yes/no |Setup - Set yes if you want check Android part|yes|
+|filter_path |path: string |Setup - Fill this key to not take into account when the report contains this path||
 
 <br />
 

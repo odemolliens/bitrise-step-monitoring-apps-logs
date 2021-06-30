@@ -48,6 +48,13 @@ inputs:
       value_options:
         - "yes"
         - "no"
+  - filter_path:
+    opts:
+      title: "To filter reported files"
+      summary: "Fill this key to not take into account when the report contains this path"
+      description: "Fill this key to not take into account when the report contains this path"
+      is_expand: true
+      is_required: false
   - log_count:
     opts:
       title: "The count of logs in your app"
