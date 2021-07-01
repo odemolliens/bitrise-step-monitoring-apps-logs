@@ -13,14 +13,16 @@ if [[ ${check_android} == "yes" ]]; then
         exit 1
     fi
 
+    ALL_LOGS=$(grep -ri "Landroid/util/Log;->i(\|Landroid/util/Log;->v(\|Landroid/util/Log;->w(\|Landroid/util/Log;->d(\|Landroid/util/Log;->e(" apk_decompiled/.)
+
     if [[ ${filter_path} != "" ]]; then
         echo "Filtered path 2: $filter_path"
 
-        LOGS=$(grep -ri "Landroid/util/Log;->i(\|Landroid/util/Log;->v(\|Landroid/util/Log;->w(\|Landroid/util/Log;->d(\|Landroid/util/Log;->e(" apk_decompiled/. | grep -v "$filter_path")
-        COUNT_ANDROID_LOGS=$(echo $(grep -ri "Landroid/util/Log;->i(\|Landroid/util/Log;->v(\|Landroid/util/Log;->w(\|Landroid/util/Log;->d(\|Landroid/util/Log;->e(" apk_decompiled/. | grep -v "$filter_path" | wc -l))
+        LOGS=$(echo "$ALL_LOGS" | grep -v $filter_path || true)
+        COUNT_ANDROID_LOGS=$(echo "$ALL_LOGS" | grep -v $filter_path | wc -l)
     else
-        LOGS=$(grep -ri "Landroid/util/Log;->i(\|Landroid/util/Log;->v(\|Landroid/util/Log;->w(\|Landroid/util/Log;->d(\|Landroid/util/Log;->e(" apk_decompiled/.)
-        COUNT_ANDROID_LOGS=$(echo $(grep -ri "Landroid/util/Log;->i(\|Landroid/util/Log;->v(\|Landroid/util/Log;->w(\|Landroid/util/Log;->d(\|Landroid/util/Log;->e(" apk_decompiled/. | wc -l))
+        LOGS="$ALL_LOGS"
+        COUNT_ANDROID_LOGS=$(echo "$ALL_LOGS" | wc -l)
     fi
 fi
 
