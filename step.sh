@@ -34,8 +34,8 @@ fi
 
 printf ">>>>>>>>>>  APP LOGS  <<<<<<<<<<\n" >> quality_report.txt
 
-if [[ ${COUNT_ANDROID_LOGS} == "" ]]; then
-    printf "0 log in your native code \n" >> quality_report.txt
+if [[ ${COUNT_ANDROID_LOGS} == "" || ${COUNT_ANDROID_LOGS} -eq "0" ]]; then
+    printf "0 log in your native Android code \n" >> quality_report.txt
 else
     if [[ ${COUNT_ANDROID_LOGS} != "" && ${COUNT_ANDROID_LOGS} -gt "0" ]]; then
         printf "You have : $COUNT_ANDROID_LOGS logs in your Android code \n" >> quality_report.txt
