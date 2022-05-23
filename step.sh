@@ -28,25 +28,20 @@ fi
 
 echo "---- REPORT ----"
 
-if [ ! -f "quality_report.txt" ]; then
-    printf "QUALITY REPORT\n\n\n" > quality_report.txt
+if [ ! -f "quality_report.json" ]; then
+  touch "quality_report.json"
+  echo "{}" > "quality_report.json"
 fi
 
-printf ">>>>>>>>>>  APP LOGS  <<<<<<<<<<\n" >> quality_report.txt
+STEP_KEY="Logs"
+JSON_OBJECT='{ }'
+JSON_OBJECT=$(echo "$(jq ". + { "\"$STEP_KEY\"": {} }" <<<"$JSON_OBJECT")")
 
-if [[ ${COUNT_ANDROID_LOGS} == "" || ${COUNT_ANDROID_LOGS} -eq "0" ]]; then
-    printf "0 log in your native Android code \n" >> quality_report.txt
-else
-    if [[ ${COUNT_ANDROID_LOGS} != "" && ${COUNT_ANDROID_LOGS} -gt "0" ]]; then
-        printf "You have : $COUNT_ANDROID_LOGS logs in your Android code \n" >> quality_report.txt
-        printf "Reported logs: $LOGS\n" >> quality_report.txt
-    fi
-fi
+JSON_OBJECT=$(echo "$(jq ".$STEP_KEY += { "Logs": { "oldValue": "$LIMIT", "value": "$COUNT_ANDROID_LOGS", "displayAlert": true } }" <<<"$JSON_OBJECT")")
 
-printf "\n\n" >> quality_report.txt
-
-sed 's/apk_decompiled/\rapk_decompiled/g' quality_report.txt > /Users/vagrant/deploy/quality_report.txt
-cp quality_report.txt /Users/vagrant/deploy/quality_report.txt || true
+echo "$(jq ". + $JSON_OBJECT" <<< cat quality_report.json)" > quality_report.json
+cp quality_report.json $BITRISE_DEPLOY_DIR/quality_report.json || true
+printf "Reported logs: \n$LOGS\n" > android_app_logs.txt
 
 if [[ ${COUNT_ANDROID_LOGS} != "" && ${COUNT_ANDROID_LOGS} -gt $LIMIT ]]; then
     echo "Generate an error due to logs in your native codes"
