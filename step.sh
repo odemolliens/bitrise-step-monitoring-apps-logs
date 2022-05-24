@@ -40,7 +40,7 @@ STEP_KEY="Logs"
 JSON_OBJECT='{ }'
 JSON_OBJECT=$(echo "$(jq ". + { "\"$STEP_KEY\"": {} }" <<<"$JSON_OBJECT")")
 
-JSON_OBJECT=$(echo "$(jq ".$STEP_KEY += { "Logs": { "oldValue": "$LIMIT", "value": "$COUNT_ANDROID_LOGS", "displayAlert": true } }" <<<"$JSON_OBJECT")")
+JSON_OBJECT=$(echo "$(jq ".$STEP_KEY += { "AndroidLogs": { "oldValue": "$LIMIT", "value": "$COUNT_ANDROID_LOGS", "displayAlert": true } }" <<<"$JSON_OBJECT")")
 
 echo "$(jq ". + $JSON_OBJECT" <<< cat quality_report.json)" > quality_report.json
 cp quality_report.json $BITRISE_DEPLOY_DIR/quality_report.json || true
