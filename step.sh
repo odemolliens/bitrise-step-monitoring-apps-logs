@@ -26,6 +26,9 @@ if [[ ${check_android} == "yes" ]]; then
     fi
 fi
 
+COUNT_ANDROID_LOGS=`echo $COUNT_ANDROID_LOGS | sed 's/ *$//g'`
+echo "COUNT_ANDROID_LOGS: $COUNT_ANDROID_LOGS"
+
 echo "---- REPORT ----"
 
 if [ ! -f "quality_report.json" ]; then
