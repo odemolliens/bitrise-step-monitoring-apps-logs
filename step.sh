@@ -1,5 +1,8 @@
-#!/bin/bash
-set -ex
+#!/usr/bin/env bash
+# - The -e option causes the shell to exit immediately if any command exits with a non-zero status.
+# - The -o pipefail option causes a pipeline to fail if any command in the pipeline fails, rather than just the last command.
+# - The -x option enables verbose mode, which causes the shell to print each command before executing it.
+set -eox pipefail
 
 if [[ ${log_count} != "" ]]; then
     LIMIT="$log_count"
@@ -13,7 +16,7 @@ if [[ ${check_android} == "yes" ]]; then
         exit 1
     fi
 
-    ALL_LOGS=$(grep -ri "Landroid/util/Log;->i(\|Landroid/util/Log;->v(\|Landroid/util/Log;->w(\|Landroid/util/Log;->d(\|Landroid/util/Log;->e(" apk_decompiled/.)
+    ALL_LOGS=$(grep -ri "Landroid/util/Log;->i(\|Landroid/util/Log;->v(\|Landroid/util/Log;->w(\|Landroid/util/Log;->d(\|Landroid/util/Log;->e(" apk_decompiled/.) || true
 
     if [[ ${filter_path} != "" ]]; then
         echo "Filtered path 2: $filter_path"
@@ -45,8 +48,9 @@ fi
 
 printf "\n\n" >> quality_report.txt
 
-sed 's/apk_decompiled/\rapk_decompiled/g' quality_report.txt > /Users/vagrant/deploy/quality_report.txt
-cp quality_report.txt /Users/vagrant/deploy/quality_report.txt || true
+
+sed 's/apk_decompiled/\rapk_decompiled/g' quality_report.txt > $BITRISE_DEPLOY_DIR/quality_report.txt
+
 
 if [[ ${COUNT_ANDROID_LOGS} != "" && ${COUNT_ANDROID_LOGS} -gt $LIMIT ]]; then
     echo "Generate an error due to logs in your native codes"
